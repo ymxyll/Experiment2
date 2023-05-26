@@ -111,40 +111,22 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    // while (i_flash > 0)
-    // {
-    //   HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_SET); 
-    //   HAL_Delay(100);                      
-    //   HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_RESET);
-    //   HAL_Delay(100);
-    //   i_flash --;
-    // }
-
-    // if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == GPIO_PIN_RESET)   /* sw1 */
-    //   HAL_GPIO_WritePin(GPIOF,GPIO_PIN_0, GPIO_PIN_RESET);
-    // else
-    //   HAL_GPIO_WritePin(GPIOF,GPIO_PIN_0, GPIO_PIN_SET);
-
-    // if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1) == GPIO_PIN_SET)  /* sw2 */
-    //   HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_1);
-
-    // HAL_Delay(500);
-
-    // if (HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_1) == GPIO_PIN_SET)
-    //   printf("Working:%d: %ld\n", i++, HAL_GetTick());
-
+    // 使用sscom观察输出进行调试用
     if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == GPIO_PIN_SET)
-    {//8
+    {
       printf("sw1打开\n");      
     }
     if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1) == GPIO_PIN_SET)
-    {//8
+    {
       printf("sw2打开\n");      
     }
     if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_SET)
-    {//8
+    {
       printf("sw3打开\n");      
-    }    
+    }
+
+
+    // 0b000 = 0, 设置数码管显示0
     if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == GPIO_PIN_SET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1) == GPIO_PIN_SET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_SET)
@@ -158,7 +140,7 @@ int main(void)
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_5, GPIO_PIN_SET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_6, GPIO_PIN_RESET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_7, GPIO_PIN_RESET);
-    }
+    } // 0b001 = 1, 设置数码管显示1
     else if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == GPIO_PIN_RESET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1) == GPIO_PIN_SET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_SET)
@@ -172,7 +154,7 @@ int main(void)
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_5, GPIO_PIN_RESET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_6, GPIO_PIN_RESET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_7, GPIO_PIN_RESET);   
-    }
+    } // 0b010 = 2, 设置数码管显示2
     else if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == GPIO_PIN_SET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1) == GPIO_PIN_RESET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_SET)
@@ -186,7 +168,7 @@ int main(void)
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_5, GPIO_PIN_RESET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_6, GPIO_PIN_SET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_7, GPIO_PIN_RESET);   
-    }
+    } // 0b011 = 3, 设置数码管显示3
     else if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == GPIO_PIN_RESET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1) == GPIO_PIN_RESET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_SET)
@@ -200,7 +182,7 @@ int main(void)
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_5, GPIO_PIN_RESET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_6, GPIO_PIN_SET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_7, GPIO_PIN_RESET);    
-    }
+    } // 0b100 = 4, 设置数码管显示4
     else if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == GPIO_PIN_SET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1) == GPIO_PIN_SET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET)
@@ -214,7 +196,7 @@ int main(void)
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_5, GPIO_PIN_SET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_6, GPIO_PIN_SET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_7, GPIO_PIN_RESET);    
-    }
+    } // 0b101 = 5, 设置数码管显示5
     else if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == GPIO_PIN_RESET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1) == GPIO_PIN_SET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET)
@@ -228,7 +210,7 @@ int main(void)
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_5, GPIO_PIN_SET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_6, GPIO_PIN_SET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_7, GPIO_PIN_RESET);     
-    }
+    } // 0b110 = 6, 设置数码管显示6
     else if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == GPIO_PIN_SET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1) == GPIO_PIN_RESET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET)
@@ -242,7 +224,7 @@ int main(void)
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_5, GPIO_PIN_SET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_6, GPIO_PIN_SET);
       HAL_GPIO_WritePin(GPIOF,GPIO_PIN_7, GPIO_PIN_RESET);     
-    }
+    } // 0b111 = 7, 设置数码管显示7
     else if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == GPIO_PIN_RESET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1) == GPIO_PIN_RESET
     && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET)
@@ -395,38 +377,27 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOF_CLK_ENABLE(); 
   __HAL_RCC_GPIOC_CLK_ENABLE(); 
 
-  /*Configure GPIO pins : PF0 PF1 */
+  /*Configure GPIO pins : PF0 ~ 7 */
   GPIO_Initure.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 |
-  GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7;  /* led1/2/7*/
+  GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7;  /* 控制数码管 */
   GPIO_Initure.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_Initure.Pull = GPIO_NOPULL;
   GPIO_Initure.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOF, &GPIO_Initure);
-  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PF8 PF9 PF10 */
-  GPIO_Initure.Pin = GPIO_PIN_8;  /*给拨码开关供电*/
+  /*Configure GPIO pins : PF8 */
+  GPIO_Initure.Pin = GPIO_PIN_8;  /*给拨码开关供电 */
   GPIO_Initure.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_Initure.Pull = GPIO_NOPULL;
   GPIO_Initure.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOF, &GPIO_Initure);
-  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); //初始化为高电平
 
   /*Configure GPIO pins : PC0 PC1 */
-  GPIO_Initure.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3;  /* sw1 ~ 8*/
+  GPIO_Initure.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2;  /* sw1 ~ 3*/
   GPIO_Initure.Mode = GPIO_MODE_INPUT;
   GPIO_Initure.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOC, &GPIO_Initure);
-
-  // /*Configure GPIO pin : PC8 */
-  // GPIO_Initure.Pin = GPIO_PIN_8;   /* key1_n */
-  // GPIO_Initure.Mode = GPIO_MODE_IT_RISING;
-  // GPIO_Initure.Pull = GPIO_NOPULL;
-  // HAL_GPIO_Init(GPIOC, &GPIO_Initure);
-
-  // HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5, 0);
-  // HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
-
 }
 
 /* USER CODE BEGIN 4 */
